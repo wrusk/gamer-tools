@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/timer.js"></script>
+    <script>
+      function getRunTime(){
+        console.log("calculating run time");
+        let startTime = timeToSeconds(document.getElementById('timeAlotted').value);
+        let endTime = timeToSeconds(document.getElementById('timeRemaining').value);
+        console.log("starttime: "+startTime+" endtime: "+endTime);
+        let runTime = secondsToTime(calculateRunTime(startTime,endTime));
+        console.log("runtime: " + runTime);
+        document.getElementById("runTime").innerHTML = runTime;
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Generic Run Time Calculator</h1>
+    <p>Calculate your run time for a stage with a countdown clock</p>
+    <label for="timeAlotted">Time Alotted</label><input type="text" id="timeAlotted" name="timeAlotted"/><br/>
+    <label for="timeRemaining">Time Remaining</label><input type="text" id="timeRemaining" name="timeRemaining"/><br/>
+    <div id="runTimeResults">Run Time: <span id="runTime"></span></div>
+    <input type="button" value="Calculate Run Time" onclick="getRunTime()"/>
+  </body>
+</html>
