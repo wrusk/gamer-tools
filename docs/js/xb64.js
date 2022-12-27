@@ -13,7 +13,7 @@ function secondsToTime(seconds){
     let minutes = Math.floor(secVals[0]/60);
     let timeSeconds = secVals[0] % 60;
     let centiSeconds = secVals[1];
-    let time = minutes + ":" + timeSeconds + "." +centiSeconds;
+    let time = minutes + ":" + String(timeSeconds).padStart(2,'0') + "." +centiSeconds.padEnd(2,'0');
     return time;
 }
 
@@ -44,7 +44,9 @@ function calculateRunTime(timeAlotted,timeRemaining,validCentiseconds){
         runTime -= .02;
         console.log("last digit 0");
     } else {
-        runTime = calculateLastDigit(twoDigitDecimal(runTime - 0.01),validCentiseconds);
+        console.log("Need to decrement "+ runTime);
+        let tempTime = calculateLastDigit(runTime,validCentiseconds);
+        runTime = calculateLastDigit(twoDigitDecimal(tempTime - 0.01),validCentiseconds);
     }
     return runTime;
 }
